@@ -1,0 +1,17 @@
+{
+  "patient": {
+    "identity_number": "A123456789",
+    "name": "王小明",
+    "phone": "0912345678",
+    "birth_year": 1990,
+    "birth_month": 1,
+    "birth_day": 1
+  },
+  "preferences": {
+    "target_date": "2026-04-10",
+    "doctors": ["黃禎憲"],
+    "time_of_day": "any"
+  },
+  "retry_interval_seconds": 8,
+  "start_time": "00:00:00"
+}
