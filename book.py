@@ -14,7 +14,7 @@ import json
 import subprocess
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import requests
@@ -47,14 +47,13 @@ def load_config(path="config.json"):
 
 
 def wait_until(start_time_str: str):
-    """Sleep until the given HH:MM:SS time today (or tomorrow if already past)."""
+    """Sleep until the next occurrence of HH:MM:SS (tomorrow if that time has already passed today)."""
     now = datetime.now()
     h, m, s = map(int, start_time_str.split(":"))
     target = now.replace(hour=h, minute=m, second=s, microsecond=0)
+    if target <= now:
+        target += timedelta(days=1)
     delta = (target - now).total_seconds()
-    if delta <= 0:
-        print(f"[*] start_time {start_time_str} already passed — starting immediately")
-        return
     print(f"[*] Waiting until {start_time_str} ({int(delta)}s from now)...")
     # Print countdown every 10s for the last minute, then every second
     while True:
