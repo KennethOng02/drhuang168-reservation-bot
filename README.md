@@ -17,9 +17,10 @@ The clinic opens online reservations every night at 00:00 for the corresponding 
 cd drhuang168
 python3 -m venv venv
 venv/bin/pip install -r requirements.txt
+cp config.example.json config.json
 ```
 
-Edit `config.json` with your details (see [Configuration](#configuration) below).
+Edit `config.json` with your details (see [Configuration](#configuration) below). This file is gitignored — your personal info never gets committed.
 
 ## Usage
 
